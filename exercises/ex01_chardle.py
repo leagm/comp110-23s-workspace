@@ -48,7 +48,12 @@ if(five_word[4] == single_character):
 else:
     """Continue"""
 
-if(counter > 0):
+if(counter == 1):
+    print(counter , " instance of " + single_character + " found in " + five_word)
+else:
+    """Continue"""
+
+if(counter >= 2):
     print(counter , " instances of " + single_character + " found in " + five_word)
 else:
     """Continue"""
