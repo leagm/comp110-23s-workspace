@@ -17,13 +17,12 @@ while playing:
     if (len(guess) != len(SECRET_WORD)):
         guess: str = input(f"That was not {len(SECRET_WORD)} letters! Try again: ")
         playing = True
-
+        
     else:
         while count_idx < len(SECRET_WORD):
             while match_idx < len(SECRET_WORD) and elsewhere:
-                if (SECRET_WORD[match_idx] == guess[count_idx]):
+                if (guess[count_idx] == SECRET_WORD[match_idx]):
                     elsewhere = True
-                    emoji = emoji + YELLOW_BOX
                 else:
                     match_idx = match_idx + 1
             if (guess[count_idx] == SECRET_WORD[count_idx]):
@@ -38,4 +37,3 @@ while playing:
         else:
             print("Not quite, Play again soon! ")
             playing = False
-
