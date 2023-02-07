@@ -1,4 +1,4 @@
-"""EX02 - One Shot Wordle. """
+"""EX02 - One Shot Wordle."""
 
 __author__ = "730486771"
 
@@ -23,20 +23,20 @@ while playing:
         while count_idx < len(SECRET_WORD):
             if (guess[count_idx] == SECRET_WORD[count_idx]):
                 emoji = emoji + GREEN_BOX
-                count_idx =  count_idx + 1
+                count_idx = count_idx + 1
 # Lines 28-30 continue the code if the indices do not evaluate to a green box. Match_idx is reset to 0 so that the following while loop will compare the guess index to all indices of the secret word. The bool elsewhere is set to False to keep the following while loop running
             else:
                 match_idx = int = 0
                 elsewhere = False
 # Lines 32-34 start an embedded while loop which will compare each index of the guess word to every index of the secret word as long as the bool elsewhere remains False
-                while elsewhere == False and match_idx < len(SECRET_WORD):
+                while elsewhere is False and match_idx < len(SECRET_WORD):
                     if (guess[count_idx] == SECRET_WORD[match_idx]):
                         elsewhere = True
 # Lines 36-37 tell the program to increase the index counter for the secret word (match_idx) if the indices of the secret word do not match with that of the guess word.
                     else:
                         match_idx = match_idx + 1
 # Lines 39-41 provide a further direction for once the if and else statements above have been evaluated. If elsewhere was assigned to be True above, then a yellow box emoji should be added to the emoji string at the appropriate index, count_idx should be increased and then the while loop should start over with a new index in the guess to be compared to all indices of the secret word
-                if elsewhere == True:
+                if elsewhere is True:
                     emoji = emoji + YELLOW_BOX
                     count_idx = count_idx + 1
 # Lines 43-45 tell the program that if there were no matches for an index in the guess word with any of the indices in the secret word then a white box emoji should be added to the appropriate index in the emoji string
