@@ -26,7 +26,7 @@ while playing:
                 count_idx = count_idx + 1
 # Lines 28-30 continue the code if the indices do not evaluate to a green box. Match_idx is reset to 0 so that the following while loop will compare the guess index to all indices of the secret word. The bool elsewhere is set to False to keep the following while loop running
             else:
-                match_idx = int = 0
+                match_idx: int = 0
                 elsewhere = False
 # Lines 32-34 start an embedded while loop which will compare each index of the guess word to every index of the secret word as long as the bool elsewhere remains False
                 while elsewhere is False and match_idx < len(SECRET_WORD):
