@@ -8,3 +8,8 @@ def contains_char(search_through: str, search_for: str) -> bool:
     count_idx: int = 0
     while count_idx < len(search_through):
         if (search_through[count_idx] == search_for):
+            return True
+        else:
+            count_idx = count_idx + 1
+    if (search_through != search_for):
+        return False
