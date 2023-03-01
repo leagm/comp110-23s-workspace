@@ -2,10 +2,14 @@
 
 __author__ = "730486771"
 
+
 # Lines 6-7 define the function all. It's parameters are a list of integers called numbers_list, and an integer called number. It returns True if all of the integers in the list are equal to the integer. It returns False if otherwise
 def all(numbers_list: list[int], number: int) -> bool:
     """Given a list of integers and an integer, return True if all integers in the list match the integer. Return False if otherwise."""
-# Lines 9 defines list_idx to keep track of what index is being evaluated in the list. Line 10 defines a boolean called running which will keep the body of this function going
+# Lines 9-10 will end the function and return False if the list numbers_list is empty
+    if len(numbers_list) == 0:
+        return False
+    # Lines 9 defines list_idx to keep track of what index is being evaluated in the list. Line 10 defines a boolean called running which will keep the body of this function going
     list_idx: int = 0
     running: bool = True
 # Line 12 starts a while loop that will run while the boolean running is True and while the list_idx counter remains less than the amount of indexes in the list
@@ -22,6 +26,7 @@ def all(numbers_list: list[int], number: int) -> bool:
     if running is True:
         return True
 
+
 # Lines 26-27 define a function called max. Its parameter is a list of integers called input. It will return the largest integer in the list.
 def max(input: list[int]) -> int:
     """Given a list of integers, return the largest integer in the list."""
@@ -29,12 +34,12 @@ def max(input: list[int]) -> int:
     if len(input) == 0:
         raise ValueError("max() arg is an empty List")
     
-# Line 33 defines a counting index xalled int_list_idx which keeps track of the index being evaluated in the list. Line 34 defines the max number as being the first index in the list
+    # Line 33 defines a counting index xalled int_list_idx which keeps track of the index being evaluated in the list. Line 34 defines the max number as being the first index in the list
     int_list_idx: int = 0
     max_number: int = input[0]
 
 # Line 37 starts a while loop which will run while the index being evaluated is less than the number of indexes in the list
-    while int_list_idx < len(input) - 1:
+    while int_list_idx <= len(input) - 1:
 # Lines 39-41 check if the first index of the list is greater than the max number, and if it is, then the integer at the first index becomes the max number and the code re-enters thsi if statement. It will wontinue to compare the reassigned max number to the next index in the list until the entire list has been evaluated and the true max number is found
         if input[int_list_idx] > max_number:
             max_number = input[int_list_idx]
@@ -44,6 +49,7 @@ def max(input: list[int]) -> int:
             int_list_idx += 1
 # Line 46 returns the max number after the entire list has been evaluated 
     return max_number
+
 
 # Lines 49-50 define a function called is_equal. Its parameters are 2 lists of integers. It returns the boolean True if the lists are exactly equal, i.e. if every value at each index is the same. It returns False if otherwise
 def is_equal(list_1: list[int], list_2: list[int]) -> bool:
