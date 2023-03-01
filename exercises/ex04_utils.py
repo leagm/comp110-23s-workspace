@@ -14,7 +14,7 @@ def all(numbers_list: list[int], number: int) -> bool:
     running: bool = True
 # Line 12 starts a while loop that will run while the boolean running is True and while the list_idx counter remains less than the amount of indexes in the list
     while list_idx < len(numbers_list) - 1 and running is True:
-# Lines 14-16 checks if the first index of the list is equal to the integer. If it is, then it will check the next index and so on until the end of the list
+    # Lines 14-16 checks if the first index of the list is equal to the integer. If it is, then it will check the next index and so on until the end of the list
         if number == numbers_list[list_idx]:
             running = True
             list_idx += 1
@@ -40,7 +40,7 @@ def max(input: list[int]) -> int:
 
 # Line 37 starts a while loop which will run while the index being evaluated is less than the number of indexes in the list
     while int_list_idx <= len(input) - 1:
-# Lines 39-41 check if the first index of the list is greater than the max number, and if it is, then the integer at the first index becomes the max number and the code re-enters thsi if statement. It will wontinue to compare the reassigned max number to the next index in the list until the entire list has been evaluated and the true max number is found
+    # Lines 39-41 check if the first index of the list is greater than the max number, and if it is, then the integer at the first index becomes the max number and the code re-enters thsi if statement. It will wontinue to compare the reassigned max number to the next index in the list until the entire list has been evaluated and the true max number is found
         if input[int_list_idx] > max_number:
             max_number = input[int_list_idx]
             int_list_idx += 1
