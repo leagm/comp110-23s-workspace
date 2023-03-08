@@ -18,8 +18,14 @@ def concat(list1: list[int], list2: list[int]) -> list:
 
 def sub(a_list: list[int], start: int, end: int) -> list:
     """Given a list of integers, and two integers, the first of which is a start index and the second and end index-1, return a list which is a subset of the given list between the two given indexes"""
-    a_list: list[int] = input(list())
-    sub_list: list = list()
-    for num in range(start, end):
-        sub_list.append(num)
-    return sub_list
+    sub_list = []
+    if (start < 0):
+        start = 0
+    if (end > (len(a_list)-1)):
+        end = len(a_list)
+    if (0 == len(a_list)) or (start >= len(a_list)) or (end <= 0) or (start >= end):
+        return sub_list
+    else: 
+        for num in range(start, end):
+            sub_list.append(a_list[num])
+        return sub_list
