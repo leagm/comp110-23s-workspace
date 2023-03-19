@@ -15,14 +15,15 @@ DRAGON: str = "\U0001F409"
 UNICORN: str = "\U0001F984"
 
 points: int = 40
-player: str = ""
+player: str = str("")
 
 
 def greet() -> None:
     """Greets player with welcome message, provides context of game, asks player for their name."""
+    global player
     print("Welcome to MYTHICAL RESCUE! ")
-    print((f"{WIZARD}: Hello there! I am Grand-dalf the Great! I need your help, mysterious hero! A band of evil trolls have captured some of my mythical creatures and friends. I hope you choose to assist me! "))
-    player: str = input("What is your name, hero?: ")
+    print((f"{WIZARD}: Hello there! I am Grand-dalf the Great! I need your help, mysterious hero! A band of evil trolls have captured some of my mythical \ncreatures and friends. I hope you choose to assist me! "))
+    player += (input("What is your name, hero?: "))
     print(f"{WIZARD}: Well met, {player}! Let us continue on this mythical quest!")
 
 
@@ -35,7 +36,7 @@ def rescue_directions() -> None:
     """Provides more detailed explanation of game rules and directions."""
     print(f"{WIZARD}: Looking for guidance, {player}? Well look no further! Let me explain how you will proceed on this rescue!")
     proceed()
-    print(f"{WIZARD}: You will begin your rescue with 40 hero points. There are 7 evil trolls for you to defeat, and 7 creatures to save. There is an evil troll guarding each mythical creature or being.")
+    print(f"{WIZARD}: You will begin your rescue with 40 hero points. There are 7 evil trolls for you to defeat, and 7 creatures to save. There is an evil \ntroll guarding each mythical creature or being.")
     proceed()
     print(f"{WIZARD}: To challenge a troll, you will roll for a random number. If your number is larger than the troll's number, you have defeated the troll and the troll's number will be added to your hero points.")
     proceed()
@@ -46,16 +47,22 @@ def rescue_directions() -> None:
     print(f"{WIZARD}: Each creature or being that you rescue will add a point value to your hero points as you progress.")
     proceed()
     running: bool = True
+    global points
     while running is True:
         y_or_n_hat = input(f"{WIZARD}: Oh! A question for you, {player}! Do you like my hat? \nY or N?: ")
         if y_or_n_hat == "Y":
             print(f"Many thanks, {player}! I've added 5 points to your hero points!" )
-            points = points + 5
+            points += 5
+            running = False
         elif y_or_n_hat == "N":
             print(f"I beg you pardon, {player}? Bah! I'm removing 5 hero points for your cheek!")
-            points = points - 5
+            points -= 5
+            running = False
         else:
             print(input("Please enter Y or N: "))
+            running = True
+        print(f"Current Hero Points: {points}")
+    running = False
         
 
 
@@ -91,70 +98,77 @@ def roll() -> int:
 
 def start_rescue(points: int) -> int:
     """Runs the game, returns final points."""
-    hero_points: int = 0
     stage_number: int = 1
     creatures: list[str] = ["placeholder", "fairy", "elf", "mermaid", "sea serpent", "kraken", "dragon", "unicorn"]
     emojis: list[str] = ["PLACEHOLDER", FAIRY, ELF, MERMAID, SERPENT, KRAKEN, DRAGON, UNICORN]
     creatures_points: list[int] = [0, 5, 5, 10, 10, 10, 20, 40]
     running: bool = True
 
-    while running is True and points > 0 and stage_number <= 7:
+    while running is True and points >= 0 and stage_number <= 7:
         print(f"==+== Stage {str(stage_number)}/7 ==+==")
         print(f"Current Hero Points: {points}")
         print(f"{WIZARD}: Let's rescue the {creatures[stage_number]}, {player}!")
         print(f"{TROLL}: *angry* ROOOOAAAARRRR!!!")
         points += roll()
-        hero_points += points
-        if hero_points > 0:
+        if points >= 0:
             print(f"{WIZARD}: Hurrah, {player}! You beat the troll and rescued the {creatures[stage_number]}!")
             print(f"{emojis[stage_number]}: Thank you, {player}! Here are {creatures_points[stage_number]} hero points!")
             points += creatures_points[stage_number]
             stage_number += 1
             running = True
-        if hero_points < 0:
+        if points < 0:
             print(f"{WIZARD}: You were unable to rescue the {creatures[stage_number]}. ")
             print(f"{TROLL}: *triumphant* ROOOOAAAARRRR!!!")
             print(f"{emojis[stage_number]} No! Please come back, {player}! ")
             running = False
-    if hero_points > 0:
+    
+    if points > 0:
         print(f"{WIZARD}: You've done it, {player}! You have rescued all of the creatures! We are forever grateful!")
+        return points
     else:
         print(f"{WIZARD}: Dark times are upon us. {player}, you were unable to rescue all of the creatures.")
-    return hero_points
+        return points
+    
 
 
 
 def game_loop() -> None:
     """Provides choices after game has ended. Will proceed down a path depending on user input."""
-    next_choice: int = input("How would you like to proceed?(Please enter a number choice): \n1. Rescue Directions/Rules \n2. Leave Rescue \n3. Play Again ")
+    next_choice: int = int(input("How would you like to proceed? \n1. Rescue Directions/Rules \n2. Leave Rescue \n3. Play Again \n(Please enter a number choice):"))
     running: bool = True
     while running is True:
         if next_choice == 1:
             rescue_directions()
+            running = True
         if next_choice == 2:
             leave_rescue()
+            running = False
         if next_choice == 3:
             main()
-
-
-def next_choice() -> None:
-    """Provides main three options for user to choose from, and redirects player on that path based on user input."""
-    next_choice: int = input("How would you like to proceed? 1. Rescue Directions/Rules 2. Leave Rescue 3. Start Rescue (Please enter a number choice): ")
-    running: bool = True
-    while running is True:
-        if next_choice == 1:
-            rescue_directions
-        if next_choice == 2:
-            leave_rescue
-        if next_choice == 3:
-            start_rescue
+            running = False
 
 
 def main() -> None:
     """Entry point of the game and main game loop."""
+    global points
+    global player
+    player = str("")
     greet()
-    next_choice()
-    print(f"Rescue over. Final Hero Points: {(start_rescue(points)) == points}")
+    
+    playing: bool = True
+
+    while playing is True:
+        choice: int = int(input("How would you like to proceed? \n1. Rescue Directions/Rules \n2. Leave Rescue \n3. Start Rescue \n(Please enter a number choice): "))
+        if choice == 1:
+            rescue_directions()
+            playing = True
+        if choice == 2:
+            leave_rescue()
+            playing = False
+        if choice == 3:
+            points == start_rescue(points)
+            print(f"Rescue over. Final Hero Points: {points}")
+            playing = False
     game_loop()
 
 
