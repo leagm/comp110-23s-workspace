@@ -51,7 +51,7 @@ def rescue_directions() -> None:
     while running is True:
         y_or_n_hat = input(f"{WIZARD}: Oh! A question for you, {player}! Do you like my hat? \nY or N?: ")
         if y_or_n_hat == "Y":
-            print(f"Many thanks, {player}! I've added 5 points to your hero points!" )
+            print(f"Many thanks, {player}! I've added 5 points to your hero points!")
             points += 5
             running = False
         elif y_or_n_hat == "N":
@@ -64,7 +64,6 @@ def rescue_directions() -> None:
         print(f"Current Hero Points: {points}")
     running = False
         
-
 
 def leave_rescue() -> None:
     """Prints farewell message including number of points, exits game."""
@@ -80,7 +79,7 @@ def roll() -> int:
 
     while running is True:
         roll_1 = randint(1, 20)
-        roll_2 = randint(1,20)
+        roll_2 = randint(1, 20)
         print(f"{WIZARD}: Roll a number!")
         input("Press Enter to continue...")
         print(f"You rolled: {roll_1}")
@@ -129,8 +128,6 @@ def start_rescue(points: int) -> int:
         print(f"{WIZARD}: Dark times are upon us. {player}, you were unable to rescue all of the creatures.")
         return points
     
-
-
 
 def game_loop() -> None:
     """Provides choices after game has ended. Will proceed down a path depending on user input."""
