@@ -8,6 +8,5 @@ def invert(my_dict: dict[str, str]) -> dict[str, str]:
     new_dict: dict[str, str] = []
     for x in my_dict:
         x = my_dict[x] 
-        my_dict[x] = x
-        new_dict.append(my_dict)
+    new_dict = my_dict
     return new_dict
