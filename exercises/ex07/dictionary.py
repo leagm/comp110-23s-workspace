@@ -12,8 +12,8 @@ def invert(my_dict: dict[str, str]) -> dict[str, str]:
         raise KeyError("Error: value duplicates")
     # Looks through dictionary values and reassigns those values as the keys in the new inverted dictionary
     for keys in my_dict:
-       value = my_dict[keys]
-       inverted_dict[value] = keys
+        value = my_dict[keys]
+        inverted_dict[value] = keys
     return inverted_dict
 
 
