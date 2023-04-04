@@ -25,3 +25,25 @@ def column_values(table: list[dict[str, str]], column: str) -> list[str]:
             return_list.append(row[column])
     return return_list
 
+
+def columnar(table: list[dict[str, str]]) -> dict[str, list[str]]:
+    """Reformats data so that it's a dictionary with column headers as keys """
+    result: dict[str, list[str]] = {}
+    # loop through keys of one row of table
+    first_row: dict[str, str] = table[0]
+    for key in first_row:
+        # for each key, make a dictionary entry with all column values
+        result[key] = column_values(table, key)
+    return result
+
+
+def head(table: dict[str, list[str]], n: int) -> dict[str, list[str]]:
+    """Produces a new column-based table with the first ___(number) rows of data for each column."""
+    return_dict: dict[str, list[str]] = {}
+
+    for column in table:
+        first_n: list[str] = []
+        for row in column:
+            first_n.append(column[n])
+            return_dict += first_n
+    return return_dict
