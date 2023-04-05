@@ -41,7 +41,7 @@ def head(table: dict[str, list[str]], n: int) -> dict[str, list[str]]:
     """Produces a new column-based table with the first ___(number) rows of data for each column."""
     return_dict: dict[str, list[str]] = {}
 
-    for column in table:
+    for column in table[1]:
         first_n: list[str] = []
         for row in column:
             first_n.append(column[n])
