@@ -21,7 +21,6 @@ def column_values(table: list[dict[str, str]], column: str) -> list[str]:
     return_list: list[str] = []
 
     for row in table:
-        if row == column:
             return_list.append(row[column])
     return return_list
 
@@ -46,7 +45,5 @@ def head(table: dict[str, list[str]], n: int) -> dict[str, list[str]]:
         for item in range(1, n + 1):
             return_vals.append(item)
         return_dict[column] = return_vals
-    print(return_vals)
     return return_dict
     
-
