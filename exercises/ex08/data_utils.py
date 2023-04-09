@@ -39,11 +39,13 @@ def columnar(table: list[dict[str, str]]) -> dict[str, list[str]]:
 def head(table: dict[str, list[str]], n: int) -> dict[str, list[str]]:
     """Produces a new column-based table with the first ___(number) rows of data for each column."""
     return_dict: dict[str, list[str]] = {}
+    i = 0
 
     for column in table:
         return_vals: list[str] = []
-        for item in range(1, n + 1):
-            return_vals.append(item)
+        for item in column:
+            while i in range(n + 1):
+                return_vals.append(item)
         return_dict[column] = return_vals
     return return_dict
     
