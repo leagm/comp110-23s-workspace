@@ -53,7 +53,7 @@ def head(table: dict[str, list[str]], n: int) -> dict[str, list[str]]:
     for column in table:
         return_vals: list[str] = []
         i: int = 0
-        while i < n and n > 0:
+        while i < n and n > 0 and n <= len(table):
             return_vals.append(table[column][i])
             i += 1
         return_dict[column] = return_vals
