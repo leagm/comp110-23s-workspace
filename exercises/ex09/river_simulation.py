@@ -1,6 +1,10 @@
 """River Simulation"""
 
-from bear import Bear
-from river import River
 
-my_river: River(num_bears = 2, num_fish = 10)
+from exercises.ex09.river import River
+    
+my_river = River(10, 2)
+
+my_river.view_river()
+
+my_river.one_river_week()

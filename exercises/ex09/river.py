@@ -1,13 +1,13 @@
 """File to define River class"""
 
-from fish import Fish
-from bear import Bear
+from exercises.ex09.fish import Fish
+from exercises.ex09.bear import Bear
 
 class River:
 
     day: int
-    bears: list = [Bear]
-    fish: list = [Fish]
+    bears: list[Bear]
+    fish: list[Fish]
 
     def __init__(self, num_fish: int, num_bears:int):
         """New River with num_fish Fish and num_bears Bears"""
@@ -20,6 +20,13 @@ class River:
         for x in range(0, num_bears):
             self.bears.append(Bear())
 
+    def remove_fish(self, amount: int):
+
+        self.fish.pop(amount)
+        self.fish.pop[0]
+
+        return None
+
     def bears_eating(self):
         return None
     
@@ -27,6 +34,18 @@ class River:
         return None
                 
     def check_ages(self):
+
+        live_fish = list[Fish]
+        live_bears = list[Bear]
+
+        for animal in self.fish:
+            if animal.age <= 3:
+                live_fish.append(animal)
+        self.fish = live_fish
+        for animal in self.bears:
+            if animal.age <= 5:
+                live_bears.append(animal)
+        self.bears = live_bears
         return None
         
     def repopulate_fish(self):
@@ -36,8 +55,11 @@ class River:
         return None
     
     def view_river(self):
+
         print(f"~~~ Day {self.day}: ~~~")
-        
+        print(f"Fish population: {len(self.fish)}")
+        print(f"Bear population: {len(self.bears)}")
+
         return None
             
     def one_river_day(self):
@@ -61,4 +83,15 @@ class River:
         self.repopulate_bears()
         # Visualize River
         self.view_river()
-            
+    
+    def one_river_week(self):
+
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        
+        return None
