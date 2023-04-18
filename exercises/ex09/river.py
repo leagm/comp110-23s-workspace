@@ -28,9 +28,25 @@ class River:
         return None
 
     def bears_eating(self):
+
+        for animal in self.bears:
+            if len(self.fish) >= 5:
+                self.remove_fish(3)
+                Bear.eat(3)
+
         return None
     
     def check_hunger(self):
+
+        live_bears = list[Bear]
+
+        for animal in self.bears:
+            if animal.hunger_score < 0:
+                live_bears.pop(animal)
+            if animal.hunger_score >= 0:
+                live_bears.append(animal)
+        self.bears = live_bears
+
         return None
                 
     def check_ages(self):
@@ -46,6 +62,7 @@ class River:
             if animal.age <= 5:
                 live_bears.append(animal)
         self.bears = live_bears
+        
         return None
         
     def repopulate_fish(self):
