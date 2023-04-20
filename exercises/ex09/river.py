@@ -21,9 +21,10 @@ class River:
             self.bears.append(Bear())
 
     def remove_fish(self, amount: int):
-        for animal in range(0, amount):
-            self.fish.pop(animal)
-
+        
+        for _ in range(amount):
+            self.fish.pop(0)
+            
         return None
 
     def bears_eating(self):
@@ -32,6 +33,7 @@ class River:
             if len(self.fish) >= 5:
                 self.remove_fish(3)
             animal.eat(3)
+            self.remove_fish(3)
 
         return None
     
@@ -42,8 +44,7 @@ class River:
         for animal in self.bears:
             if animal.hunger_score < 0:
                 live_bears.pop(animal)
-            if animal.hunger_score >= 0:
-                live_bears.append(animal)
+            
         self.bears = live_bears
 
         return None
@@ -67,14 +68,14 @@ class River:
     def repopulate_fish(self):
 
         new_fish = (len(self.fish) // 2) * 4
-        self.fish.append(new_fish)
+        self.fish.append(Fish(new_fish))
 
         return None
     
     def repopulate_bears(self):
 
         new_bears = len(self.bears) // 2 
-        self.bears.append(new_bears)
+        self.bears.append(Bear(new_bears))
 
         return None
     
