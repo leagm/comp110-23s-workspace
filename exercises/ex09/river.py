@@ -36,8 +36,15 @@ class River:
         for animal in self.bears:
             if len(self.fish) >= 5:
                 self.remove_fish(3)
-            animal.eat(3)
-            self.remove_fish(3)
+                animal.eat(3)
+            else:
+                fish_to_eat = len(self.fish)
+                if fish_to_eat >= 3:
+                    self.remove_fish(fish_to_eat)
+                    animal.eat(fish_to_eat)
+                    self.remove_fish(fish_to_eat)
+                else:
+                    animal.eat(-(fish_to_eat))
 
         return None
     
@@ -46,8 +53,8 @@ class River:
         live_bears = list[Bear]
 
         for animal in self.bears:
-            if animal.hunger_score < 0:
-                live_bears.pop(animal)
+            if animal.hunger_score > 0:
+                live_bears.append(animal)
             
         self.bears = live_bears
 
@@ -55,31 +62,22 @@ class River:
                 
     def check_ages(self):
         """Checks to see if bear is young enough to live."""
-        live_fish = list[Fish]
-        live_bears = list[Bear]
+        self.fish = [fish for fish in self.fish if fish.age <= 3]
+        self.bears = [bear for bear in self.bears if bear.age <= 5]
 
-        for animal in self.fish:
-            if animal.age <= 3:
-                live_fish += animal
-                self.fish = live_fish
-        for animal in self.bears:
-            if animal.age <= 5:
-                live_bears += animal
-                self.bears = live_bears
-        
         return None
-        
+    
     def repopulate_fish(self):
         """Repopulates the fish population in the river."""
-        new_fish = (self.fish // 2) * 4
+        new_fish = (len(Fish) // 2) * 4
         self.fish.append(new_fish)
 
         return None
     
     def repopulate_bears(self):
         """Repopulates the bear population at the river."""
-        new_bears = len(self.bears) // 2 
-        self.bears.append(Bear(new_bears))
+        new_bears = len(Bear) // 2 
+        self.bears.append(new_bears)
 
         return None
     
@@ -116,7 +114,9 @@ class River:
     
     def one_river_week(self):
         """Runs the course of a week in the river."""
-        for _ in range(7):
+        day = 1
+        for _ in range(8):
+            day += 1
             self.one_river_day()
 
         return None
