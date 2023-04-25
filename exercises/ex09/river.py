@@ -5,6 +5,11 @@ __author__ = "730486771"
 from exercises.ex09.fish import Fish
 from exercises.ex09.bear import Bear
 
+<<<<<<< HEAD
+=======
+from exercises.ex09.fish import Fish
+from exercises.ex09.bear import Bear
+>>>>>>> 11995d82d2a026185397c5323e28767f62a63cd3
 
 class River:
     """Class for the river itself."""
@@ -23,12 +28,16 @@ class River:
         for _ in range(0, num_bears):
             self.bears.append(Bear())
 
+<<<<<<< HEAD
     def remove_fish(self, amount: int):
         """Removes fish from the river."""
         for _ in range(amount):
             if self.fish:
                 self.fish.pop(0)
             
+=======
+    def check_ages(self):
+>>>>>>> 11995d82d2a026185397c5323e28767f62a63cd3
         return None
 
     def bears_eating(self):
@@ -59,6 +68,7 @@ class River:
         self.bears = live_bears
 
         return None
+<<<<<<< HEAD
                 
     def check_ages(self):
         """Checks to see if bear is young enough to live."""
@@ -67,6 +77,9 @@ class River:
 
         return None
     
+=======
+        
+>>>>>>> 11995d82d2a026185397c5323e28767f62a63cd3
     def repopulate_fish(self):
         """Repopulates the fish population in the river."""
         new_fish = (len(Fish) // 2) * 4
@@ -90,7 +103,11 @@ class River:
         return None
             
     def one_river_day(self):
+<<<<<<< HEAD
         """Runs the course of a single day in the river."""
+=======
+        """Simulate one day of life in the river"""
+>>>>>>> 11995d82d2a026185397c5323e28767f62a63cd3
         # Increase day by 1
         self.day += 1
         # Simulate one day for all Bears
