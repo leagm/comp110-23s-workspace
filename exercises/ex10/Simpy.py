@@ -24,7 +24,7 @@ class Simpy:
 
         return return_str
     
-    def __fill__ (self, float_val: float, num_vals: int):
+    def fill (self, float_val: float, num_vals: int):
         """Fills a Simpy's values list with a specific number of repeating values."""
         vals_list: list[float] = []
     
@@ -34,5 +34,5 @@ class Simpy:
         
         return None
 
-
-    
+    def arange (self, start: float, stop: float, simpy_self: float):
+        """Fills in object values attribute with a range of float values."""
