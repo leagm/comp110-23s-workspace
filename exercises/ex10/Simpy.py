@@ -9,7 +9,7 @@ __author__ = "730486771"
 
 class Simpy:
     values: list[float]
-
+    
     # TODO: Your constructor and methods will go here.
 
     def __init__ (self, my_list: list[float]):
@@ -24,13 +24,15 @@ class Simpy:
 
         return return_str
     
-    def __fill__ (self, float_val: float, num_vals: int) -> None:
+    def __fill__ (self, float_val: float, num_vals: int):
         """Fills a Simpy's values list with a specific number of repeating values."""
         vals_list: list[float] = []
-        fill_simpy: str = f"Simpy({vals_list})"
-
+    
         for _ in range(0, num_vals + 1):
             vals_list.append(float_val)
-
-        return fill_simpy
+        self.values = vals_list
         
+        return None
+
+
+    
