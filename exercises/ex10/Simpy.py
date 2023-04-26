@@ -52,6 +52,8 @@ class Simpy:
     def sum (self) -> float:
         """Computes the sum of all values in the object values attribute."""
         return_val = sum(self.values)
-        
+
         return return_val
     
+    def __add__ (self):
+        """"""
