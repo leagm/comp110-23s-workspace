@@ -34,18 +34,18 @@ class Simpy:
         
         return None
 
-    def arange (self, start: float, stop: float, step: float):
+    def arange (self, start: float, stop: float, step: float = 1.0):
         """Fills in object values attribute with a range of float values."""
-        range_values: list[float] = []
-        n_start: int = int(start)
-        n_stop: int = int(stop)
-        n_step: int = int(step)
-        step != 1.0 or 1
-        for _ in range(n_start, n_stop + 1, n_step):
-            range_values.append(_)
-        for values in range_values:
-            float(values)
-        self.values = range_values
+        step != 0.0
+        new_vals: list[float] = []
+        value: float = start
+        while value <= stop:
+            if value == start:
+                new_vals.append(start)
+            else:
+                value += step
+                new_vals.append(value)
+        self.values = new_vals
 
         return None
     
