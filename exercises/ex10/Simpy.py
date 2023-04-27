@@ -9,6 +9,7 @@ __author__ = "730486771"
 
 class Simpy:
     """Class for EX10."""
+
     values: list[float]
     
     # TODO: Your constructor and methods will go here.
@@ -25,7 +26,7 @@ class Simpy:
 
         return return_str
     
-    def fill(self, float_val: float, num_vals: int):
+    def fill(self, float_val: float, num_vals: int) -> None:
         """Fill a Simpy's values list with a specific number of repeating values."""
         self.values = []
 
@@ -36,12 +37,12 @@ class Simpy:
 
         return None
 
-    def arange(self, start: float, stop: float, step: float = 1.0):
+    def arange(self, start: float, stop: float, step: float = 1.0) -> None:
         """Fill in object values attribute with a range of float values."""
         new_vals: list[float] = []
         assert step != 0.0
         x: float = start
-        for i in range (0, int((stop - start) / step)):
+        for i in range(0, int((stop - start) / step)):
             x = start + step * i
             new_vals.append(x)
         self.values = new_vals
@@ -121,7 +122,7 @@ class Simpy:
 
     def __getitem__(self, rhs: int) -> float:
         """Read certain items from the Simpy array."""
-        new_vals = self.values[rhs]
+        new_vals = self.values[int(rhs)]
 
         return new_vals
 
