@@ -8,34 +8,36 @@ __author__ = "730486771"
 
 
 class Simpy:
+    """Class for EX10."""
     values: list[float]
     
     # TODO: Your constructor and methods will go here.
 
-    def __init__ (self, my_list: list[float]):
-        """Constructor that intializes values attribute of simpy object to the argument passed in."""
+    def __init__(self, my_list: list[float]):
+        """Intialize values attribute of simpy object to the argument passed in."""
         self.values = my_list
 
         return None
     
-    def __str__ (self) -> str:
-        """Called whenever simpy object is converted to a str."""
+    def __str__(self) -> str:
+        """Call whenever simpy object is converted to a str."""
         return_str: str = f"Simpy({self.values})"
 
         return return_str
     
-    def fill (self, float_val: float, num_vals: int):
-        """Fills a Simpy's values list with a specific number of repeating values."""
-        vals_list: list[float] = []
-    
-        for _ in range(0, num_vals + 1):
-            vals_list.append(float_val)
-        self.values = vals_list
-        
+    def fill(self, float_val: float, num_vals: int):
+        """Fill a Simpy's values list with a specific number of repeating values."""
+        self.values = []
+
+        i = 0
+        while i < num_vals:
+            self.values.append(float_val)
+            i += 1
+
         return None
 
-    def arange (self, start: float, stop: float, step: float = 1.0):
-        """Fills in object values attribute with a range of float values."""
+    def arange(self, start: float, stop: float, step: float = 1.0):
+        """Fill in object values attribute with a range of float values."""
         new_vals: list[float] = []
         assert step != 0.0
         x: float = start
@@ -46,15 +48,15 @@ class Simpy:
 
         return None
     
-    def sum (self) -> float:
-        """Computes the sum of all values in the object values attribute."""
+    def sum(self) -> float:
+        """Compute the sum of all values in the object values attribute."""
         return_val = float
         return_val = sum(self.values)
 
         return return_val
     
-    def __add__ (self, rhs: Union[float, Simpy]) -> list[float]:
-        """This is too long to explain in a docstring. It's Part 5."""
+    def __add__(self, rhs: Union[float, Simpy]) -> list[float]:
+        """Alter add operand for comparing between lists."""
         new_vals: list[float] = []
         if isinstance(rhs, float):
             for i in self.values:
@@ -66,7 +68,7 @@ class Simpy:
         
         return Simpy(new_vals)
 
-    def __pow__ (self, rhs: Union[float, Simpy]) -> list[float]:
+    def __pow__(self, rhs: Union[float, Simpy]) -> list[float]:
         """Similar to Pt 5 but with raising to a power **."""
         new_vals: list[float] = []
         if isinstance(rhs, float):
@@ -79,7 +81,7 @@ class Simpy:
         
         return Simpy(new_vals)
 
-    def __eq__ (self, rhs: Union[float, Simpy]) -> list[bool]:
+    def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
         """When == operand is used will compare the values of two lists and if the values in each list correspond then return True and if else False."""
         new_vals: list[bool] = []
         if isinstance(rhs, float):
@@ -98,7 +100,7 @@ class Simpy:
 
         return new_vals
 
-    def __gt__ (self, rhs: Union[float, Simpy]) -> list[bool]:
+    def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
         """When > operand is used compares values in two lists and if one value is larger than th eother returns True and if else returns False."""
         new_vals: list[bool] = []
         if isinstance(rhs, float):
@@ -117,14 +119,14 @@ class Simpy:
         
         return new_vals
 
-    def __getitem__ (self, rhs: int) -> float:
-        """Reads certain items from the Simpy array."""
+    def __getitem__(self, rhs: int) -> float:
+        """Read certain items from the Simpy array."""
         new_vals = self.values[rhs]
 
         return new_vals
 
-    def __getitem__ (self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
-        """Reads certain items but filters them with a mask."""
+    def __newgetitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
+        """Read certain items but filters them with a mask."""
         new_vals: list[float] = []
         if isinstance(rhs, int):
             return self.values[rhs]
