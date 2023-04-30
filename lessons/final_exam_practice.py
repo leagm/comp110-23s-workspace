@@ -67,3 +67,15 @@ def merge_lists(list1: list[str], list2: list[int]) -> dict[str, int]:
 
 # print(merge_lists(["blue", "yellow", "red"], [5, 2, 4]))
 
+def reverse_multiply(my_list: list[list[int]]) -> list[int]:
+    """Double the values in given list, return new list with doubled values in reverse order."""
+    return_list: list[int] = []
+    i: int = len(my_list) - 1
+    while i >= 0:
+        return_list.append(my_list[i] * 2)
+        i -= 1
+    return return_list
+ 
+
+# print(reverse_multiply([1, 2, 3]))
+
